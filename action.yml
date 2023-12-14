@@ -1,4 +1,4 @@
-name: "Bulid and deploy Opendata-Website"
+name: "Build and deploy Opendata-Website"
 description: "Die Action - Bulid and deploy Opendata-Website - erzeugt und deployed eine Datensatz Website des aufrufenden Datensatz-Repositories"
 inputs:
   GH_TOKEN:
@@ -15,7 +15,8 @@ runs:
     - name: Pull OpenDataPage
       uses: actions/checkout@v2
       with:
-        repository: "robert-koch-institut/OpenData-Website"
+        repository: "eckelmannf/OpenData-Website"
+        #repository: "robert-koch-institut/OpenData-Website"
 
     - name: Create datasource.json
       uses: ./createDatasourceJsonAction
