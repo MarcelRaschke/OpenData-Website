@@ -13,7 +13,7 @@ runs:
   using: "composite"
   steps:
     - name: Pull OpenDataPage
-      uses: actions/checkout@v2
+      uses: actions/checkout@v6
       with:
         repository: "eckelmannf/OpenData-Website"
         #repository: "robert-koch-institut/OpenData-Website"
