@@ -1,3 +1,6 @@
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 name: "Create datasource.json"
 description: "Creates the datasource json file, which stores the necessary data for the github opendata website."
 inputs:
