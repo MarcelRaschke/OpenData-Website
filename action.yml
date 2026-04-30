@@ -21,18 +21,24 @@ runs:
     - name: Create datasource.json
       uses: ./createDatasourceJsonAction
       with:
-        GH_TOKEN: ${{inputs.GH_TOKEN}}
+        GH_TOKEN: ${{ inputs.GH_TOKEN }}
 
     - name: Setup Node.js environment
-      uses: actions/setup-node@v2.5.1
+      uses: actions/setup-node@v4
       with:
-        node-version: 14.x
+        node-version: 24
+        cache: 'npm'
 
     - name: Prepare and deploy
       env:
-        GH_TOKEN: ${{inputs.GH_TOKEN}}
+        GH_TOKEN: ${{ inputs.GH_TOKEN }}
       run: |
         cd $GITHUB_WORKSPACE
         npm install
-        npm run ng -- deploy --repo=https://github.com/$GITHUB_REPOSITORY.git --base-href=/${GITHUB_REPOSITORY#*/}/ --branch=${{inputs.WEBSITE_BRANCH}} --name=${GITHUB_ACTOR} --email=${GITHUB_ACTOR}@users.noreply.github.com
+        npm run ng -- deploy \
+          --repo=https://github.com/$GITHUB_REPOSITORY.git \
+          --base-href=/${GITHUB_REPOSITORY#*/}/ \
+          --branch=${{ inputs.WEBSITE_BRANCH }} \
+          --name=${GITHUB_ACTOR} \
+          --email=${GITHUB_ACTOR}@users.noreply.github.com
       shell: bash
